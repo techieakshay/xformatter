@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "8A86E3D4-18E2-475C-A957-CB273935DDC3"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "439052AA-63FF-40C8-A13A-0B36F075CC9E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "XFormatter/ContentView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "194"
+            endingLineNumber = "194"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "63ABDAE1-B4A5-4BC3-9014-775A9CB7BD52"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "XFormatter/ContentView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "159"
+            endingLineNumber = "159"
+            landmarkName = "runSwiftFormatter(at:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "63ABDAE1-B4A5-4BC3-9014-775A9CB7BD52 - 21dd0496d295c4c2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "XFormatter.ContentView.runSwiftFormatter(at: Swift.String) -&gt; ()"
+                  moduleName = "XFormatter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/akshaysoni/Heybytes/CodeWithAkshay/testgenerator/XFormatter/XFormatter/ContentView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "160"
+                  endingLineNumber = "160"
+                  offsetFromSymbolStart = "1604">
+               </Location>
+               <Location
+                  uuid = "63ABDAE1-B4A5-4BC3-9014-775A9CB7BD52 - 21dd0496d295c53d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "XFormatter.ContentView.runSwiftFormatter(at: Swift.String) -&gt; ()"
+                  moduleName = "XFormatter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/akshaysoni/Heybytes/CodeWithAkshay/testgenerator/XFormatter/XFormatter/ContentView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "159"
+                  endingLineNumber = "159"
+                  offsetFromSymbolStart = "2048">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7CBAC9AE-130E-4B14-B63D-6F6D94DA8828"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "XFormatter/ContentView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "162"
+            endingLineNumber = "162"
+            landmarkName = "runSwiftFormatter(at:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "7CBAC9AE-130E-4B14-B63D-6F6D94DA8828 - 21dd0496d295c480"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "XFormatter.ContentView.runSwiftFormatter(at: Swift.String) -&gt; ()"
+                  moduleName = "XFormatter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/akshaysoni/Heybytes/CodeWithAkshay/testgenerator/XFormatter/XFormatter/ContentView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "162"
+                  endingLineNumber = "162"
+                  offsetFromSymbolStart = "2048">
+               </Location>
+               <Location
+                  uuid = "7CBAC9AE-130E-4B14-B63D-6F6D94DA8828 - 21dd0496d295c4a1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "XFormatter.ContentView.runSwiftFormatter(at: Swift.String) -&gt; ()"
+                  moduleName = "XFormatter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/akshaysoni/Heybytes/CodeWithAkshay/testgenerator/XFormatter/XFormatter/ContentView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "163"
+                  endingLineNumber = "163"
+                  offsetFromSymbolStart = "2120">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
