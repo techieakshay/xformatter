@@ -15,131 +15,155 @@ struct ContentView: View {
     @State private var output: String = ""
     @State private var errorMessage = ""
     @State private var showConfiguration: Bool = false
+    @State private var isLoading = false
 
     var body: some View {
-        VStack {
-            HStack {
-                Spacer()
+        ZStack {
+            VStack {
+                HStack {
+                    Spacer()
+                    Button(action: {
+                        showConfiguration.toggle()
+                    }) {
+                        Image(systemName: "gearshape.fill")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 30, height: 30)
+                            .foregroundColor(.blue)
+                    }
+                    .padding()
+                    .buttonStyle(PlainButtonStyle())
+                }
+
+                // Title
+                Text("Select a Folder")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .padding(.top, 40)
+
+                // Description text
+                Text("Choose a folder and click the button to proceed.")
+                    .font(.subheadline)
+                    .foregroundColor(.gray)
+                    .padding(.bottom, 40)
+
+                // Folder Display
+                if let folderURL = folderURL {
+                    Text("Selected Folder: \(folderURL.path)")
+                        .font(.body)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.blue.opacity(0.2))
+                        .cornerRadius(10)
+                        .padding(.horizontal)
+                } else {
+                    Text("No Folder Selected")
+                        .font(.body)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.gray.opacity(0.2))
+                        .cornerRadius(10)
+                        .padding(.horizontal)
+                }
+
+                Spacer() // Creates space between folder display and buttons
+
+                // Folder Picker Button
                 Button(action: {
-                    showConfiguration.toggle()
+                    output = ""
+                    showingFolderPicker.toggle()
                 }) {
-                    Image(systemName: "gearshape.fill")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 30, height: 30)
-                        .foregroundColor(.blue)
-                }
-                .padding()
-                .buttonStyle(PlainButtonStyle())
-            }
-
-            // Title
-            Text("Select a Folder")
-                .font(.largeTitle)
-                .fontWeight(.bold)
-                .padding(.top, 40)
-
-            // Description text
-            Text("Choose a folder and click the button to proceed.")
-                .font(.subheadline)
-                .foregroundColor(.gray)
-                .padding(.bottom, 40)
-
-            // Folder Display
-            if let folderURL = folderURL {
-                Text("Selected Folder: \(folderURL.path)")
-                    .font(.body)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(Color.blue.opacity(0.2))
-                    .cornerRadius(10)
-                    .padding(.horizontal)
-            } else {
-                Text("No Folder Selected")
-                    .font(.body)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(Color.gray.opacity(0.2))
-                    .cornerRadius(10)
-                    .padding(.horizontal)
-            }
-
-            Spacer() // Creates space between folder display and buttons
-
-            // Folder Picker Button
-            Button(action: {
-                output = ""
-                showingFolderPicker.toggle()
-            }) {
-                Text("Choose Folder")
-                    .foregroundColor(.white)
-                    .padding()
-                    .frame(maxWidth: 300)
-                    .background(Color.blue)
-                    .cornerRadius(10)
-                    .padding(.horizontal)
-            }
-            .buttonStyle(PlainButtonStyle())
-            .fileImporter(isPresented: $showingFolderPicker, allowedContentTypes: [.folder]) { result in
-                do {
-                    let folder = try result.get()
-                    folderURL = folder
-                    folderSelected = true
-                } catch {
-                    print("Error selecting folder: \(error.localizedDescription)")
-                }
-            }
-
-            // Bottom space to push the "Proceed" button down
-            Spacer().frame(height: 20)
-
-            // Proceed Button at the Bottom
-            Button(action: {
-                if let folderPath = folderURL?.path {
-                    runSwiftFormatter(at: folderPath)
-                }
-            }) {
-                Text("Proceed")
-                    .foregroundColor(.white)
-                    .padding()
-                    .frame(maxWidth: 300)
-                    .background(folderSelected ? Color.green : Color.gray)
-                    .cornerRadius(10)
-                    .padding(.horizontal)
-            }
-            .buttonStyle(PlainButtonStyle())
-            .disabled(!folderSelected) // Disable if no folder selected
-            .alert(isPresented: $showErrorAlert) {
-                Alert(title: Text("Error"), message: Text(errorMessage), dismissButton: .default(Text("OK")))
-            }
-            Spacer().frame(height: 20) // Extra padding at the bottom
-
-            // Output display area
-            if !output.isEmpty {
-                Rectangle()
-                    .fill(Color.black)
-                    .frame(height: 120)
-                    .cornerRadius(8)
-                    .padding()
-                    .overlay(Text(output) // Display output here
+                    Text("Choose Folder")
                         .foregroundColor(.white)
                         .padding()
-                        .multilineTextAlignment(.leading)
-                        .lineLimit(nil))
+                        .frame(maxWidth: 300)
+                        .background(Color.blue)
+                        .cornerRadius(10)
+                        .padding(.horizontal)
+                }
+                .buttonStyle(PlainButtonStyle())
+                .fileImporter(isPresented: $showingFolderPicker, allowedContentTypes: [.folder]) { result in
+                    do {
+                        let folder = try result.get()
+                        folderURL = folder
+                        folderSelected = true
+                    } catch {
+                        print("Error selecting folder: \(error.localizedDescription)")
+                    }
+                }
+
+                // Bottom space to push the "Proceed" button down
+                Spacer().frame(height: 20)
+
+                // Proceed Button at the Bottom
+                Button(action: {
+                    if let folderPath = folderURL?.path {
+                        runSwiftFormatter(at: folderPath)
+                    }
+                }) {
+                    Text("Proceed")
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(maxWidth: 300)
+                        .background(folderSelected ? Color.green : Color.gray)
+                        .cornerRadius(10)
+                        .padding(.horizontal)
+                }
+                .buttonStyle(PlainButtonStyle())
+                .disabled(!folderSelected) // Disable if no folder selected
+                .alert(isPresented: $showErrorAlert) {
+                    Alert(title: Text("Error"), message: Text(errorMessage), dismissButton: .default(Text("OK")))
+                }
+                Spacer().frame(height: 20) // Extra padding at the bottom
+
+                // Output display area
+                if !output.isEmpty {
+                    Rectangle()
+                        .fill(Color.black)
+                        .frame(height: 120)
+                        .cornerRadius(8)
+                        .padding()
+                        .overlay(Text(output) // Display output here
+                            .foregroundColor(.white)
+                            .padding()
+                            .multilineTextAlignment(.leading)
+                            .lineLimit(nil))
+                }
+            }
+            .sheet(isPresented: $showConfiguration) {
+                ConfigurationView() // Present the configuration view
+            }
+            .frame(maxHeight: .infinity) // Make sure content is spaced properly
+            .padding(.bottom, 20) // Padding for safe area on the bottom
+            if isLoading {
+                Color.black.opacity(0.1) // Semi-transparent background
+                    .ignoresSafeArea()
+
+                VStack {
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle())
+                        .scaleEffect(2.0)
+                        .padding()
+
+                    Text("Processing...")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(Color.gray.opacity(0.1))
+                .cornerRadius(15)
             }
         }
-        .sheet(isPresented: $showConfiguration) {
-            ConfigurationView() // Present the configuration view
-        }
-        .frame(maxHeight: .infinity) // Make sure content is spaced properly
-        .padding(.bottom, 20) // Padding for safe area on the bottom
+        // Loader overlay
     }
 
     // Function to check if swiftformat is installed
     func runSwiftFormatter(at folderPath: String) {
+        isLoading = true
         guard let swiftformatPath = findSwiftformat() else {
             errorMessage = "SwiftFormat is not installed. Please install it using 'brew install swiftformat'."
             showErrorAlert = true
+            isLoading = false
             return
         }
 
@@ -167,10 +191,11 @@ struct ContentView: View {
             let output = String(data: data, encoding: .utf8) ?? ""
             print("Output: \(output)")
             self.output = output
-
+            isLoading = false
         } catch {
             errorMessage = "Failed to run SwiftFormat: \(error.localizedDescription)"
             showErrorAlert = true
+            isLoading = false
         }
     }
 
