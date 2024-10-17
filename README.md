@@ -37,4 +37,4 @@ brew install swiftformat
 
 
 ## Link to App
-[Link Text](github/XFormatter.app)
+[XFormatter.app](github/XFormatter.app)
