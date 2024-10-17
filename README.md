@@ -18,6 +18,8 @@ This is a macOS application built with SwiftUI that allows users to format Swift
 ```bash
 brew install swiftformat
 
+```
+
 ## Screenshots
 
 ### Landing Page
